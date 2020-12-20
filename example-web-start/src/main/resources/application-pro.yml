@@ -1,0 +1,71 @@
+server:
+  port: 8080
+spring:
+  application:
+    # 应用名
+    name: cloud-three-code
+  http:
+    encoding:
+      # 缺省编码（这里只是在客户端没设置编码时起效，如果要强制编码，请配置force）
+      enabled: true
+      charset: UTF-8
+  # 时区（也可以使用fastjson，就不用配置时区了。不配置时区，接收时间参数时会少8个小时。）
+  jackson:
+    time-zone: GMT+8
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true
+    username: root
+    password: choice
+    initialSize: 5
+    minIdle: 5
+    maxActive: 50
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  redis:
+    host: localhost
+    port: 6379
+    password: zhaojufei
+    database: 0
+    timeout: 0
+    pool:
+      jedis:
+        min-idle: 2
+        max-idle: 8
+        max-active: 32
+        max-wait: -1
+# 调接口超时时间
+ribbon:
+  ConnectTimeout: 10000
+  ReadTimeout: 10000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.user.name}:${eureka.user.password}@域名/eureka/
+  instance:
+    appname: ${spring.application.name}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+  user:
+    name: 用户名
+    password: 密码
+
+# 数据源配置
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mapper/*.xml
+
+
+
+
