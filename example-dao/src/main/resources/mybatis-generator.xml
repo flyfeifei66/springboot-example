@@ -15,6 +15,7 @@
         <!-- DO 生成 toString 方法 -->
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
 
+        <!-- 插件介绍地址： https://gitee.com/whan0216/mybatis-generator-plugin -->
         <!-- 数据Model链式构建插件 -->
         <plugin type="com.itfsw.mybatis.generator.plugins.ModelBuilderPlugin"/>
         <!-- 数据Model属性对应Column获取插件 -->
