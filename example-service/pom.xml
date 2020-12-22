@@ -17,5 +17,9 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.zhaojufei.bizline</groupId>
+            <artifactId>example-dao</artifactId>
+        </dependency>
     </dependencies>
 </project>
