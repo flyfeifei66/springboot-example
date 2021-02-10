@@ -55,7 +55,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- 本工程模块依赖 -->
+            <!-- 本工程模块 -->
             <dependency>
                 <groupId>com.zhaojufei.bizline</groupId>
                 <artifactId>example-web-start</artifactId>

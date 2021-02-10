@@ -2,11 +2,13 @@ package com.zhaojufei.bizline.example.practice;
 
 public class IntTest {
     public static void main(String[] args) {
-        int i =1;
-        System.out.println(i++);
+        ss(1);
+    }
 
-        i = i++;
-
+    public static void ss(int k) {
+        int i = 1;
+        System.out.println(++i);
         System.out.println(i);
+
     }
 }
