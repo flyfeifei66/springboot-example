@@ -6,8 +6,7 @@ public class IntTest {
     }
 
     public static void ss(int k) {
-        int i = 1;
-        System.out.println(++i);
+      int i = Integer.valueOf("1.0");
         System.out.println(i);
 
     }

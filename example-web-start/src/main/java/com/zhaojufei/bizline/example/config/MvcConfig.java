@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.ArrayList;
@@ -19,49 +20,41 @@ import java.util.List;
  * @date 2020/2/11 9:12
  */
 @Configuration
-public class MvcConfig implements WebMvcConfigurer {
+public class MvcConfig extends WebMvcConfigurationSupport {
 
     /**
      * 使用fastjson代替jackson
      */
     @Override
-    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        //先把JackSon的消息转换器删除.
-        //(1)源码分析可知，返回json的过程为:
-        //  Controller调用结束后返回一个数据对象，for循环遍历conventers，找到支持application/json的HttpMessageConverter，然后将返回的数据序列化成json。
-        //  具体参考org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor的writeWithMessageConverters方法
-        //(2)由于是list结构，我们添加的fastjson在最后。因此必须要将jackson的转换器删除，不然会先匹配上jackson，导致没使用fastjson
-        for (Iterator<HttpMessageConverter<?>> iterator = converters.iterator(); iterator.hasNext(); ) {
-            HttpMessageConverter httpMessageConverter = iterator.next();
-            if (httpMessageConverter instanceof MappingJackson2HttpMessageConverter) {
-                iterator.remove();
-            }
-        }
 
-        //自定义fastjson配置
-        FastJsonConfig config = new FastJsonConfig();
-        config.setSerializerFeatures(
-                // 是否输出值为null的字段,默认为false,我们将它打开
-                SerializerFeature.WriteMapNullValue,
-                // 将Collection类型字段的字段空值输出为[]
-                SerializerFeature.WriteNullListAsEmpty,
-                // 将字符串类型字段的空值输出为空字符串
-                SerializerFeature.WriteNullStringAsEmpty,
-                SerializerFeature.WriteDateUseDateFormat,
-                // 禁用循环引用
-                SerializerFeature.DisableCircularReferenceDetect
+    /**
+     * 自定义消息转换器
+     *
+     * @param converters
+     */
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        super.configureMessageConverters(converters);
+        // 1.构建了一个HttpMessageConverter FastJson 消息转换器
+        FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
+        // 2.定义一个配置，设置编码方式，和格式化的形式
+        FastJsonConfig fastJsonConfig = new FastJsonConfig();
+        // 3.设置成了PrettyFormat格式
+        fastJsonConfig.setSerializerFeatures(SerializerFeature.WriteMapNullValue, // 是否输出值为null的字段,默认为false
+                SerializerFeature.WriteNullBooleanAsFalse, // Boolean字段如果为null,输出为false,而非null
+                SerializerFeature.WriteNullListAsEmpty, // List字段如果为null,输出为[],而非nul
+                SerializerFeature.DisableCircularReferenceDetect, // 消除对同一对象循环引用的问题，默认为false
+                SerializerFeature.WriteNullStringAsEmpty// 字符类型字段如果为null,输出为"",而非null
         );
-
-        // 添加支持的MediaTypes;不添加时默认为*/*,也就是默认支持全部
-        // 但是MappingJackson2HttpMessageConverter里面支持的MediaTypes为application/json
+        // 4.处理中文乱码问题
         List<MediaType> fastMediaTypes = new ArrayList<>();
-        fastMediaTypes.add(MediaType.APPLICATION_JSON);
         fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
+        fastMediaTypes.add(MediaType.APPLICATION_JSON);
+        fastConverter.setSupportedMediaTypes(fastMediaTypes);
 
-        FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
-        fastJsonHttpMessageConverter.setFastJsonConfig(config);
-        fastJsonHttpMessageConverter.setSupportedMediaTypes(fastMediaTypes);
-        converters.add(fastJsonHttpMessageConverter);
+        // 5.将fastJsonConfig加到消息转换器中
+        fastConverter.setFastJsonConfig(fastJsonConfig);
+        converters.add(fastConverter);
     }
+
 }
 
