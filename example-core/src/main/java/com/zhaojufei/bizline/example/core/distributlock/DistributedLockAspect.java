@@ -3,7 +3,7 @@ package com.zhaojufei.bizline.example.core.distributlock;
 
 import com.zhaojufei.bizline.example.core.constant.AdviceOrder;
 import com.zhaojufei.bizline.example.core.exception.BizException;
-import com.zhaojufei.bizline.example.core.web.enums.ResCodeEnum;
+import com.zhaojufei.bizline.example.facade.domain.enums.ResCodeEnum;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;

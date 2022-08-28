@@ -17,7 +17,7 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/test_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true
     username: root
-    password: choice
+    password: 123456
     initialSize: 5
     minIdle: 5
     maxActive: 50
@@ -35,7 +35,6 @@ spring:
   redis:
     host: localhost
     port: 6379
-    password: zhaojufei
     database: 0
     timeout: 0
     pool:

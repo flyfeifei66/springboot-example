@@ -1,8 +1,9 @@
-package com.zhaojufei.bizline.example.core.web.domain.dto;
+package com.zhaojufei.bizline.example.facade.domain.dto;
 
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
+
 
 @Data
 public class TestDto {
