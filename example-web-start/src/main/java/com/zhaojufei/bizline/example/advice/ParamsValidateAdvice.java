@@ -2,7 +2,7 @@ package com.zhaojufei.bizline.example.advice;
 
 import com.google.common.collect.Lists;
 import com.zhaojufei.bizline.example.core.exception.BizException;
-import com.zhaojufei.bizline.example.core.web.enums.ResCodeEnum;
+import com.zhaojufei.bizline.example.facade.domain.enums.ResCodeEnum;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;

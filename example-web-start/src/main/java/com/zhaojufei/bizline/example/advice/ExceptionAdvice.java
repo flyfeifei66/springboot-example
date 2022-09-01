@@ -1,8 +1,8 @@
 package com.zhaojufei.bizline.example.advice;
 
 import com.zhaojufei.bizline.example.core.exception.BizException;
-import com.zhaojufei.bizline.example.core.web.domain.MsgBody;
-import com.zhaojufei.bizline.example.core.web.enums.ResCodeEnum;
+import com.zhaojufei.bizline.example.facade.domain.MsgBody;
+import com.zhaojufei.bizline.example.facade.domain.enums.ResCodeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;

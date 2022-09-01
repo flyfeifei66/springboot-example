@@ -50,7 +50,8 @@
         <module>example-service</module>
         <module>example-dao</module>
         <module>example-core</module>
-        <module>example-practice</module>
+        <module>example-facade</module>
+        <module>example-facade</module>
     </modules>
 
     <dependencyManagement>
@@ -64,6 +65,11 @@
             <dependency>
                 <groupId>com.zhaojufei.bizline</groupId>
                 <artifactId>example-web-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zhaojufei.bizline</groupId>
+                <artifactId>example-facade</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>example-web-api</artifactId>
+    <artifactId>example-facade</artifactId>
 
     <dependencies>
         <dependency>
@@ -17,22 +17,15 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
-            <groupId>com.zhaojufei.bizline</groupId>
-            <artifactId>example-biz</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zhaojufei.bizline</groupId>
-            <artifactId>example-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zhaojufei.bizline</groupId>
-            <artifactId>example-facade</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
     </dependencies>
 </project>

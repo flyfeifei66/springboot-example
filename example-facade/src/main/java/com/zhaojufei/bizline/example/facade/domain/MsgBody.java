@@ -1,7 +1,8 @@
-package com.zhaojufei.bizline.example.core.web.domain;
+package com.zhaojufei.bizline.example.facade.domain;
+
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.zhaojufei.bizline.example.core.web.enums.ResCodeEnum;
+import com.zhaojufei.bizline.example.facade.domain.enums.ResCodeEnum;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;

@@ -3,7 +3,7 @@ package com.zhaojufei.bizline.example.biz;
 import com.alibaba.fastjson.JSON;
 import com.zhaojufei.bizline.example.ExampleWebApplication;
 import com.zhaojufei.bizline.example.biz.demo.DemoBiz;
-import com.zhaojufei.bizline.example.core.web.domain.dto.TestDto;
+import com.zhaojufei.bizline.example.facade.domain.dto.TestDto;
 import com.zhaojufei.bizline.example.service.domain.CompanyDetail;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,6 +1,7 @@
 package com.zhaojufei.bizline.example.core.exception;
 
-import com.zhaojufei.bizline.example.core.web.enums.ResCodeEnum;
+
+import com.zhaojufei.bizline.example.facade.domain.enums.ResCodeEnum;
 
 /**
  * 业务异常类

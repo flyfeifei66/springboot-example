@@ -1,4 +1,4 @@
-package com.zhaojufei.bizline.example.core.web.enums;
+package com.zhaojufei.bizline.example.facade.domain.enums;
 
 /**
  * 返回Code枚举，建议统一在此处定义全局唯一异常码
