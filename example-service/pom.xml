@@ -21,5 +21,13 @@
             <groupId>com.zhaojufei.bizline</groupId>
             <artifactId>example-dao</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.zhaojufei.bizline</groupId>
+            <artifactId>example-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
     </dependencies>
 </project>
