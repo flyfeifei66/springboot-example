@@ -53,8 +53,8 @@ public class MnRemindConfServiceImpl implements MnRemindConfService {
 	@Autowired
 	private MnRemindConfMapper mnRemindConfMapper;
 
-	@Autowired
-	private MessageCenterFeign messageCenterFeign;
+	//@Autowired
+	//private MessageCenterFeign messageCenterFeign;
 
 	@Autowired
 	private BasicProperties basicProperties;
@@ -159,8 +159,8 @@ public class MnRemindConfServiceImpl implements MnRemindConfService {
 			// 指定模板路径
 			String emailContent = templateEngine.process("mail/mailRemind.html", context);
 			// 调用消息中心发送邮件
-			responseData = messageCenterFeign.sendEmail("Bearer " + basicProperties.getJwt(), UUID.randomUUID().toString(), emailList,
-					subject, true, emailContent, createFile(mnRemindConf));
+			//responseData = messageCenterFeign.sendEmail("Bearer " + basicProperties.getJwt(), UUID.randomUUID().toString(), emailList,
+			//		subject, true, emailContent, createFile(mnRemindConf));
 			// 每封邮件隔3秒钟
 			Thread.sleep(3000);
 			// 处理过程异常

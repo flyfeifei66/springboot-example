@@ -13,29 +13,25 @@ spring:
   jackson:
     time-zone: GMT+8
   datasource:
-    url: jdbc:mysql://localhost:3306/test_db
+    driver-class-name: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true&serverTimezone=UTC
     username: root
     password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
-    hikari:
-      # 设置连接池的名称，默认为"HikariPool-1"
-      pool-name: HikariPool
-      # 设置是否自动提交事务，默认为true
-      auto-commit: true
-      # 设置用于测试连接的SQL查询语句
-      connection-test-query: SELECT 1
-      # 设置获取数据库连接的超时时间，默认为30秒，单位是秒
-      connection-timeout: 30000
-      # 设置连接在连接池中保持空闲的最长时间，默认为10分钟，单位是秒
-      idle-timeout: 30000
-      # 设置连接在连接池中允许存在的最长时间，默认为30分钟，单位是秒
-      max-lifetime: 1800000
-      # 设置连接池中允许的最大连接数，默认为10
-      maximum-pool-size: 15
-      # 设置连接池中保持的最小空闲连接数，默认为10
-      minimum-idle: 5
-      # 设置连接验证的超时时间，默认为5秒
-      validation-timeout: 5000
+    initialSize: 5
+    minIdle: 5
+    maxActive: 50
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
   redis:
     host: localhost
     port: 6379
